@@ -1,0 +1,48 @@
+<form #validForm="ngForm" (ngSubmit)="onSubmit(validForm)">
+  <!--Nombre-->
+  <div class="form-group row my-5">
+    <label for="" class="col-form-label col-sm-2">Nombre</label>
+    <div class="col-sm-6">
+      <input type="text" class="form-control" [(ngModel)]="author.name" name="nombre" #nombre="ngModel" required
+        minlength="3" />
+      <div class="alert alert-danger" *ngIf="nombre.invalid && (nombre.dirty || nombre.touched)">
+        <div *ngIf="nombre.errors?.['required']">
+          El campo 'Nombre'es Requerido
+        </div>
+        <div *ngIf="nombre.errors?.['minlength']">
+          El Campo Nombre debe tener mínimo 3 caracteres
+        </div>
+      </div>
+    </div>
+  </div>
+  <!--Nacionalidad-->
+  <div class="form-group row my-5">
+    <label for="" class="col-form-label col-sm-2">Nacionalidd</label>
+    <div class="col-sm-6">
+      <input type="text" class="form-control" [(ngModel)]="author.nationality" name="nacionaliad" #nacionaliad="ngModel"
+        required minlength="3" />
+      <div class="alert alert-danger" *ngIf="nacionaliad.invalid && (nacionaliad.dirty || nacionaliad.touched)">
+        <div *ngIf="nacionaliad.errors?.['required']">
+          El campo 'Nacionalidad' es Requerido
+        </div>
+        <div *ngIf="nacionaliad.errors?.['minlength']">
+          El Campo 'Nacionalidad' debe tener mínimo 3 caracteres
+        </div>
+      </div>
+    </div>
+  </div>
+  <!--Botones-->
+  <div class="form-group row">
+    <div class="col-sm-6">
+      <button class="btn btn-primary" role="button" *ngIf="!author.id; else elseBlock"
+        [disabled]="!validForm.form.valid">
+        Registrar
+      </button>
+      <ng-template #elseBlock>
+        <button class="btn btn-primary" role="button" [disabled]="!validForm.form.valid">
+          Actualizar
+        </button>
+      </ng-template>
+    </div>
+  </div>
+</form>

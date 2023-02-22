@@ -1,0 +1,38 @@
+<div class="body d-flex py-lg-3 py-md-2">
+    <div class="container-xxl">
+        <div class="row align-items-center">
+            <div class="border-0 mb-4">
+                <div
+                    class="card-header py-3 no-bg bg-transparent d-flex align-items-center px-0 justify-content-between border-bottom flex-wrap">
+                    <h3 class="fw-bold mb-0">Author</h3>
+                </div>
+            </div>
+        </div>
+        <!-- Table  -->
+        <div class="row clearfix g-3">
+            <div class="col-sm-12">
+                <div class="card mb-3">
+                    <div class="card-body">
+                        <app-table-author [authors]="authors" [buttons]="buttonsTable"
+                            (onClickButton)="onClickTableButton($event)"></app-table-author>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Form  -->
+        <div class="row clearfix g-3">
+            <div class="col-sm-12">
+                <div class="card mb-3">
+                    <div class="card-body">
+                        <div class="justify-content-end d-flex " *ngIf="author.id" (click)="limpiar()">
+                            <a  class="btn btn-primary btn-set-task w-sm-100">
+                                <i class="icofont-plus-circle me-2 fs-6"></i>Limpiar
+                            </a>
+                        </div>
+                        <app-form-author [author]="author" (onClickButton)="onClickFormButton($event)"></app-form-author>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

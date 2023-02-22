@@ -1,0 +1,31 @@
+
+<table
+  id="myProjectTable"
+  class="table table-hover align-middle mb-0"
+  style="width: 100%"
+>
+  <thead>
+    <tr>
+      <th>id</th>
+      <th>Nombre</th>
+      <th>Nacionalidad</th>
+      <th  *ngIf="buttons.length>0">Acciones</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr></tr>
+    <tr *ngFor="let author of authors">
+      <td class="cursor-pointer-g">{{ author.id }}</td>
+      <td>{{ author.name }}</td>
+      <td>{{ author.nationality }}</td>
+      <td  *ngIf="buttons.length > 0">        
+        <button *ngFor="let btn of buttons" type="button" [class]="btn.class"
+        (click)="onClickButtonSelect(author,btn.action); $event.stopPropagation()"
+        >{{btn.name}}</button>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+
+
